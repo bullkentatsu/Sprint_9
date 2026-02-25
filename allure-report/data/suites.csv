@@ -1,0 +1,4 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","3007","Регистрация: переход на авторизацию и отображение формы входа","tests","2026-02-25","passed","2026-02-25","TestSignup","test_signup","",""
+"","5793","Создание рецепта: отображается карточка и корректное название","tests","2026-02-25","passed","2026-02-25","TestCreateRecipe","test_create_recipe","",""
+"","1252","Авторизация: переход на главную страницу и отображение кнопки 'Выход'","tests","2026-02-25","passed","2026-02-25","TestSignin","test_signin","",""
