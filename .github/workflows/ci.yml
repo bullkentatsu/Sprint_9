@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [ "develop" ]
+  pull_request:
+    branches: [ "develop" ]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Pull images
+        run: |
+          docker pull aerokube/selenoid:latest-release
+          docker pull selenoid/chrome:128.0
+
+      - name: Run tests in docker-compose
+        run: |
+          docker compose up --build --abort-on-container-exit --exit-code-from tests
+
+      - name: Upload allure-results artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results
+          path: allure-results
+
+      - name: Shutdown
+        if: always()
+        run: docker compose down -v
